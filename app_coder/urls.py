@@ -4,13 +4,13 @@ from app_coder import views
 
 urlpatterns = [
     path('', views.index, name='Home'),
-    path('profesors', views.profesors, name='Profesors'),
-    path('courses', views.courses, name='Courses'),
-    path('students', views.students, name='Students'),
-    path('homeworks', views.homeworks, name='Homeworks'),
+    path('products', views.products, name='Products'),
+    path('technologies', views.technologies, name='Technologies'),
+    path('users', views.users, name='Users'),
+    path('orders', views.orders, name='Orders'),
     path('formHTML', views.form_hmtl),
-    path('course-django-forms', views.course_forms_django, name='CourseDjangoForms'),
-    path('profesor-django-forms', views.profesor_forms_django, name='ProfesorDjangoForms'),
-    path('homework-django-forms', views.homework_forms_django, name='HomeworkDjangoForms'),
+    path('technology-django-forms', views.technology_forms_django, name='TechnologyDjangoForms'),
+    path('product-django-forms', views.product_forms_django, name='ProductDjangoForms'),
+    path('order-django-forms', views.order_forms_django, name='OrderDjangoForms'),
     path('search', views.search, name='Search'),
 ]

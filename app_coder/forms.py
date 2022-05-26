@@ -1,28 +1,29 @@
 import datetime
 from django import forms
 from django.forms import ModelForm
-from app_coder.models import Profesor
+from app_coder.models import Product
 
 
-class CourseForm(forms.Form):
+class ProductForm(forms.Form):
     name = forms.CharField(max_length=40, min_length=3, label='Nombre')
-    code = forms.IntegerField(label='Camada')
+    code = forms.IntegerField(label='Código')
 
 
-class ProfesorForm(forms.Form):
+class UserForm(forms.Form):
     name = forms.CharField(max_length=40, min_length=3, label='Nombre')
     last_name = forms.CharField(max_length=40, label='Apellido')
     email = forms.EmailField(label='Correo electrónico')
     profession = forms.CharField(max_length=40, label='Profesión')
-
-# class ProfesorForm(ModelForm):
-#     class Meta:
-#         model = Profesor
-#         fields = '__all__'
+    phone = forms.CharField(max_length=12, label='Número de contacto')
 
 
-class HomeworkForm(forms.Form):
-    name = forms.CharField(max_length=40, min_length=3, label='Nombre de la Entrega')
+class TechnologyForm(forms.Form):
+    name = forms.CharField(max_length=40, min_length=3, label='Nombre')
+    model = forms.CharField(label='Modelo')
+
+
+class OrderForm(forms.Form):
+    name = forms.CharField(max_length=40, min_length=3, label='Nombre del Pedido')
     due_date = forms.DateField(
         label='Fecha de Entrega',
         widget=forms.TextInput(attrs={'placeholder': 'yyyy-mm-dd'})

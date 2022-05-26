@@ -1,0 +1,17 @@
+{% extends "app_coder/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Lista de Productos</h2>
+<a class="card_custom" href="{% url 'ProductDjangoForms' %}">Crear nuevo Producto</a>
+<hr></hr>
+<ul>
+    {% for product in products %}
+        <li>
+            Producto: {{product.name}} <br>
+            Código: {{product.code}}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

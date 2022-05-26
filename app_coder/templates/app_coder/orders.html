@@ -1,0 +1,23 @@
+{% extends "app_coder/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Lista de Pedidos</h2>
+<a class="card_custom" href="{% url 'OrderDjangoForms' %}">Crear nuevo Pedido</a>
+<hr></hr>
+<ul>
+    {% for order in orders %}
+        <li>
+            Pedido: {{order.name}} <br>
+            Fecha: {{order.due_date}} <br>
+            Engregado:
+                {% if order.is_delivered %}
+                    Si
+                {% else %}
+                    No
+                {% endif%}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -40,7 +40,7 @@ python manage.py createsuperuser
 
 - Ejecutar proyecto
 ```bash
-python manage.py runserver
+
 ```
 # Comandos básicos para Git
 

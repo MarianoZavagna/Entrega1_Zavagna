@@ -1,25 +1,26 @@
 from django.db import models
 
 
-class Course(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=40)
     code = models.IntegerField()
 
 
-class Student(models.Model):
+class Technology(models.Model):
+    name = models.CharField(max_length=40)
+    model = models.CharField(max_length=40)
+
+
+class User(models.Model):
     name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     email = models.EmailField()
-
-
-class Profesor(models.Model):
-    name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
-    email = models.EmailField()
+    phone = models.CharField(max_length=12)
     profession = models.CharField(max_length=40)
 
 
-class Homework(models.Model):
+class Order(models.Model):
     name = models.CharField(max_length=40)
     due_date = models.DateField()
     is_delivered = models.BooleanField()
+

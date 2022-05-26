@@ -2,15 +2,15 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Formulario para insersión de un nuevo profesor</h2>
+<h2>Formulario para insersión de una nuevo Pedido</h2>
 <hr></hr>
 
 <form action="" method="POST">
     {% csrf_token %}
 
-    {{ profesor_form.as_p }}
+    {{ order_form.as_p }}
 
-    <input type="submit" class="btn btn-primary" value="Crear profesor" />
+    <input type="submit" class="btn btn-primary" value="Crear pedido" />
 
 </form>
 

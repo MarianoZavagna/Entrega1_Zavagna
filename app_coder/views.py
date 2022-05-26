@@ -1,85 +1,85 @@
 from django.shortcuts import render
 from django.db.models import Q
 
-from app_coder.models import Course, Student, Profesor, Homework
-from app_coder.forms import CourseForm, ProfesorForm, HomeworkForm
+from app_coder.models import Technology, User, Product, Order
+from app_coder.forms import TechnologyForm, ProductForm, OrderForm
 
 
 def index(request):
     return render(request, "app_coder/home.html")
 
 
-def profesors(request):
-    profesors = Profesor.objects.all()
+def products(request):
+    products = Product.objects.all()
 
     context_dict = {
-        'profesors': profesors
+        'products': products
     }
 
     return render(
         request=request,
         context=context_dict,
-        template_name="app_coder/profesors.html"
+        template_name="app_coder/products.html"
     )
 
 
-def courses(request):
-    courses = Course.objects.all()
+def technologies(request):
+    technology = Technology.objects.all()
 
     context_dict = {
-        'courses': courses
+        'technology': technology
     }
 
     return render(
         request=request,
         context=context_dict,
-        template_name="app_coder/courses.html"
+        template_name="app_coder/technologies.html"
     )
 
 
-def students(request):
-    students = Student.objects.all()
+def users(request):
+    users = User.objects.all()
 
     context_dict = {
-        'students': students
+        'users': users
     }
 
     return render(
         request=request,
         context=context_dict,
-        template_name="app_coder/students.html"
+        template_name="app_coder/users.html"
     )
 
 
-def homeworks(request):
-    homeworks = Homework.objects.all()
+def orders(request):
+    orders = Order.objects.all()
 
     context_dict = {
-        'homeworks': homeworks
+        'orders': orders
     }
 
     return render(
         request=request,
         context=context_dict,
-        template_name="app_coder/homeworks.html"
+        template_name="app_coder/orders.html"
     )
 
 
 def form_hmtl(request):
 
     if request.method == 'POST':
-        course = Course(name=request.POST['name'], code=request.POST['code'])
-        course.save()
+        technology = Technology(name=request.POST['name'], code=request.POST['code'])
+        technology.save()
 
-        courses = Course.objects.all()
+        technologies = Technology.objects.all()
         context_dict = {
-            'courses': courses
+            'technology': technologies
         }
 
         return render(
             request=request,
             context=context_dict,
-            template_name="app_coder/courses.html"
+            template_name="app_coder/technologies.html"
         )
 
     return render(
@@ -88,99 +88,99 @@ def form_hmtl(request):
     )
 
 
-def course_forms_django(request):
+def technology_forms_django(request):
     if request.method == 'POST':
-        course_form = CourseForm(request.POST)
-        if course_form.is_valid():
-            data = course_form.cleaned_data
-            course = Course(name=data['name'], code=data['code'])
-            course.save()
+        technology_form = TechnologyForm(request.POST)
+        if technology_form.is_valid():
+            data = technology_form.cleaned_data
+            technology = Technology(name=data['name'], code=data['code'])
+            technology.save()
 
-            courses = Course.objects.all()
+            technologies = Technology.objects.all()
             context_dict = {
-                'courses': courses
+                'technologies': technologies
             }
             return render(
                 request=request,
                 context=context_dict,
-                template_name="app_coder/courses.html"
+                template_name="app_coder/technologies.html"
             )
 
-    course_form = CourseForm(request.POST)
+    technology_form = TechnologyForm(request.POST)
     context_dict = {
-        'course_form': course_form
+        'technology_form': technology_form
     }
     return render(
         request=request,
         context=context_dict,
-        template_name='app_coder/course_django_forms.html'
+        template_name='app_coder/technology_django_forms.html'
     )
 
 
-def profesor_forms_django(request):
+def product_forms_django(request):
     if request.method == 'POST':
-        profesor_form = ProfesorForm(request.POST)
-        if profesor_form.is_valid():
-            data = profesor_form.cleaned_data
-            profesor = Profesor(
+        product_form = ProductForm(request.POST)
+        if product_form.is_valid():
+            data = product_form.cleaned_data
+            product = Product(
                 name=data['name'],
                 last_name=data['last_name'],
                 email=data['email'],
                 profession=data['profession'],
             )
-            profesor.save()
+            product.save()
 
-            profesors = Profesor.objects.all()
+            products = Product.objects.all()
             context_dict = {
-                'profesors': profesors
+                'products': products
             }
             return render(
                 request=request,
                 context=context_dict,
-                template_name="app_coder/profesors.html"
+                template_name="app_coder/products.html"
             )
 
-    profesor_form = ProfesorForm(request.POST)
+    product_form = ProductForm(request.POST)
     context_dict = {
-        'profesor_form': profesor_form
+        'product_form': product_form
     }
     return render(
         request=request,
         context=context_dict,
-        template_name='app_coder/profesor_django_forms.html'
+        template_name='app_coder/product_django_forms.html'
     )
 
 
-def homework_forms_django(request):
+def order_forms_django(request):
     if request.method == 'POST':
-        homework_form = HomeworkForm(request.POST)
-        if homework_form.is_valid():
-            data = homework_form.cleaned_data
-            homework = Homework(
+        order_form = OrderForm(request.POST)
+        if order_form.is_valid():
+            data = order_form.cleaned_data
+            order = Order(
                 name=data['name'],
                 due_date=data['due_date'],
                 is_delivered=data['is_delivered'],
             )
-            homework.save()
+            order.save()
 
-            homeworks = Homework.objects.all()
+            orders = Order.objects.all()
             context_dict = {
-                'homeworks': homeworks
+                'orders': orders
             }
             return render(
                 request=request,
                 context=context_dict,
-                template_name="app_coder/homeworks.html"
+                template_name="app_coder/orders.html"
             )
 
-    homework_form = HomeworkForm(request.POST)
+    order_form = OrderForm(request.POST)
     context_dict = {
-        'homework_form': homework_form
+        'order_form': order_form
     }
     return render(
         request=request,
         context=context_dict,
-        template_name='app_coder/homework_django_forms.html'
+        template_name='app_coder/order_django_forms.html'
     )
 
 
@@ -188,23 +188,23 @@ def search(request):
     context_dict = dict()
     if request.GET['text_search']:
         search_param = request.GET['text_search']
-        courses = Course.objects.filter(name__contains=search_param)
+        technologies = Technology.objects.filter(name__contains=search_param)
         context_dict = {
-            'courses': courses
+            'technologies': technologies
         }
     elif request.GET['code_search']:
         search_param = request.GET['code_search']
-        courses = Course.objects.filter(code__contains=search_param)
+        technologies = Technology.objects.filter(code__contains=search_param)
         context_dict = {
-            'courses': courses
+            'technologies': technologies
         }
     elif request.GET['all_search']:
         search_param = request.GET['all_search']
         query = Q(name__contains=search_param)
         query.add(Q(code__contains=search_param), Q.OR)
-        courses = Course.objects.filter(query)
+        technologies = Technology.objects.filter(query)
         context_dict = {
-            'courses': courses
+            'technologies': technologies
         }
 
     return render(
