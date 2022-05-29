@@ -3,6 +3,7 @@
 {% block contenidoQueCambia %}
 
 <h2>Lista de Usuarios</h2>
+<a class="card_custom" href="{% url 'UserDjangoForms' %}">Crear nuevo usuario</a>
 <hr></hr>
 <ul>
     {% for user in users %}

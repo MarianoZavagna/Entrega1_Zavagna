@@ -13,7 +13,7 @@ class UserForm(forms.Form):
     name = forms.CharField(max_length=40, min_length=3, label='Nombre')
     last_name = forms.CharField(max_length=40, label='Apellido')
     email = forms.EmailField(label='Correo electrónico')
-    profession = forms.CharField(max_length=40, label='Profesión')
+    profession = forms.CharField(max_length=40, label='Cargo')
     phone = forms.CharField(max_length=12, label='Número de contacto')
 
 
