@@ -221,13 +221,13 @@ def search(request):
     context_dict = dict()
     if request.GET['text_search']:
         search_param = request.GET['text_search']
-        technologies = Product.objects.filter(name__contains=search_param)
+        products = Product.objects.filter(name__contains=search_param)
         context_dict = {
             'products': products
         }
     elif request.GET['code_search']:
         search_param = request.GET['code_search']
-        technologies = Product.objects.filter(code__contains=search_param)
+        products = Product.objects.filter(code__contains=search_param)
         context_dict = {
             'products': products
         }
@@ -235,7 +235,7 @@ def search(request):
         search_param = request.GET['all_search']
         query = Q(name__contains=search_param)
         query.add(Q(code__contains=search_param), Q.OR)
-        technologies = Product.objects.filter(query)
+        products = Product.objects.filter(query)
         context_dict = {
             'products': products
         }
