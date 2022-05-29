@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 
 from app_coder.models import Technology, User, Product, Order
-from app_coder.forms import TechnologyForm, ProductForm, OrderForm
+from app_coder.forms import TechnologyForm, ProductForm, OrderForm, UserForm
 
 
 def index(request):
@@ -24,10 +24,10 @@ def products(request):
 
 
 def technologies(request):
-    technology = Technology.objects.all()
+    technologies = Technology.objects.all()
 
     context_dict = {
-        'technology': technology
+        'technologies': technologies
     }
 
     return render(
@@ -68,7 +68,7 @@ def orders(request):
 def form_hmtl(request):
 
     if request.method == 'POST':
-        technology = Technology(name=request.POST['name'], code=request.POST['code'])
+        technology = Technology(name=request.POST['name'], cmodel=request.POST['model'])
         technology.save()
 
         technologies = Technology.objects.all()
@@ -93,7 +93,7 @@ def technology_forms_django(request):
         technology_form = TechnologyForm(request.POST)
         if technology_form.is_valid():
             data = technology_form.cleaned_data
-            technology = Technology(name=data['name'], code=data['code'])
+            technology = Technology(name=data['name'], model=data['model'])
             technology.save()
 
             technologies = Technology.objects.all()
@@ -124,9 +124,7 @@ def product_forms_django(request):
             data = product_form.cleaned_data
             product = Product(
                 name=data['name'],
-                last_name=data['last_name'],
-                email=data['email'],
-                profession=data['profession'],
+                code=data['code'],
             )
             product.save()
 
@@ -184,27 +182,62 @@ def order_forms_django(request):
     )
 
 
+def user_forms_django(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        if user_form.is_valid():
+            data = user_form.cleaned_data
+            user = User(
+                name=data['name'],
+                last_name=data['last_name'],
+                email=data['email'],
+                phone=data['phone'],
+                profession=data['profession'],
+            )
+            user.save()
+
+            users = User.objects.all()
+            context_dict = {
+                'users': users
+            }
+            return render(
+                request=request,
+                context=context_dict,
+                template_name="app_coder/users.html"
+            )
+
+    user_form = UserForm(request.POST)
+    context_dict = {
+        'user_form': user_form
+    }
+    return render(
+        request=request,
+        context=context_dict,
+        template_name='app_coder/user_django_forms.html'
+    )
+
+
 def search(request):
     context_dict = dict()
     if request.GET['text_search']:
         search_param = request.GET['text_search']
-        technologies = Technology.objects.filter(name__contains=search_param)
+        technologies = Product.objects.filter(name__contains=search_param)
         context_dict = {
-            'technologies': technologies
+            'products': products
         }
     elif request.GET['code_search']:
         search_param = request.GET['code_search']
-        technologies = Technology.objects.filter(code__contains=search_param)
+        technologies = Product.objects.filter(code__contains=search_param)
         context_dict = {
-            'technologies': technologies
+            'products': products
         }
     elif request.GET['all_search']:
         search_param = request.GET['all_search']
         query = Q(name__contains=search_param)
         query.add(Q(code__contains=search_param), Q.OR)
-        technologies = Technology.objects.filter(query)
+        technologies = Product.objects.filter(query)
         context_dict = {
-            'technologies': technologies
+            'products': products
         }
 
     return render(

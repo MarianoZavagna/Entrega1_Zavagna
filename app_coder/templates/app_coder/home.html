@@ -2,20 +2,20 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Buscador de equipos</h2>
+<h2>Buscador de productos</h2>
 <hr></hr>
 
 <form action="/app_coder/search" method="GET">
     <div>
-        <input type="text" name="text_search" id="technology_name" placeholder="Busqueda por nombre">
+        <input type="text" name="text_search" id="product_name" placeholder="Busqueda por nombre">
         <input type="submit" value="Buscar por Nombre">
     </div>
     <div>
-        <input type="number" name="model_search" id="technology_model" placeholder="Busqueda por modelo">
-        <input type="submit" value="Buscar por modelo">
+        <input type="number" name="code_search" id="product_code" placeholder="Busqueda por código">
+        <input type="submit" value="Buscar por código">
     </div>
     <div>
-        <input type="text" name="all_search" id="technology_model_or_name" placeholder="Busqueda general">
+        <input type="text" name="all_search" id="technology_code_or_name" placeholder="Busqueda general">
         <input type="submit" value="Buscar">
     </div>
 
@@ -23,12 +23,12 @@
 
 <hr></hr>
 
-{% if technologies %}
+{% if products %}
     <ul>
-        {% for technology in technologies %}
+        {% for product in products %}
             <li>
-                Curso: {{technology.name}}
-                -- Código: {{technology.model}}
+                Curso: {{product.name}}
+                -- Código: {{product.code}}
             </li>
         {% endfor %}
     </ul>

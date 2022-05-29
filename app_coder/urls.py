@@ -12,5 +12,6 @@ urlpatterns = [
     path('technology-django-forms', views.technology_forms_django, name='TechnologyDjangoForms'),
     path('product-django-forms', views.product_forms_django, name='ProductDjangoForms'),
     path('order-django-forms', views.order_forms_django, name='OrderDjangoForms'),
+    path('user-django-forms', views.user_forms_django, name='UsertDjangoForms'),
     path('search', views.search, name='Search'),
 ]

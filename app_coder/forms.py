@@ -19,7 +19,7 @@ class UserForm(forms.Form):
 
 class TechnologyForm(forms.Form):
     name = forms.CharField(max_length=40, min_length=3, label='Nombre')
-    model = forms.CharField(label='Modelo')
+    model = forms.CharField(max_length=30, label='Modelo')
 
 
 class OrderForm(forms.Form):

@@ -2,15 +2,15 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Formulario para insersión de un nuevo equipo</h2>
+<h2>Formulario para creación de un nuevo usuario</h2>
 <hr></hr>
 
 <form action="" method="POST">
     {% csrf_token %}
 
-    {{ technology_form.as_p }}
+    {{ user_form.as_p }}
 
-    <input type="submit" class="btn btn-primary" value="Crear Equipo" />
+    <input type="submit" class="btn btn-primary" value="Crear usuario" />
 
 </form>
 
