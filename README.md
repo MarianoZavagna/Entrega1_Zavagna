@@ -2,7 +2,7 @@
 
 - Clonar el proyecto
 ```bash
-git clone https://github.com/coder-live-class/django-coderhouse-project.git
+git clone https://github.com/MarianoZavagna/Entrega1_Zavagna.git
 
 cd django-coderhouse-project
 ```
