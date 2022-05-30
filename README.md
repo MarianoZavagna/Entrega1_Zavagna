@@ -4,7 +4,7 @@
 ```bash
 git clone https://github.com/MarianoZavagna/Entrega1_Zavagna.git
 
-cd django-coderhouse-project
+cd Entrega1_Zavagna
 ```
 
 - Instalar Django
