@@ -23,8 +23,8 @@ http://127.0.0.1:8000/app_coder/
 ```
 
 <br>
-Una vez dentro, nos encontraremos en la página de inicio<br>
-, la cual posee un buscador de productos.<br>
+Una vez dentro, nos encontraremos en la página de inicio,<br>
+la cual posee un buscador de productos.<br>
 En la parte superior de la página podemos acceder a cuatro categorías:<br>
 <br>
 Productos - Tecnologías - Usuarios - Pedidos
